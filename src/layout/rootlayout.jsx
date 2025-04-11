@@ -8,6 +8,7 @@ import { getAllJobs } from "../api/jobApi";
 const RootLayout = () => {
   const [jobs, setJobs] = useState([]);
   const [filterdBy, setFilteredBY] = useState("All");
+  const [jobTypeFilter, setJobTypeFilter] = useState("All");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editableJob, setEditableJob] = useState(null);
   const [render, setRender] = useState(null);
@@ -15,8 +16,8 @@ const RootLayout = () => {
   const fetchJobs = useCallback(async () => {
     try {
       const data = await getAllJobs();
-      console.log("API response:", data); // ✅ helpful for debugging
-      setJobs(data.data); // or setJobs(data); based on your API
+      console.log("API response:", data); 
+      setJobs(data.data); 
     } catch (error) {
       console.error("Error fetching jobs:", error);
     }
@@ -39,7 +40,7 @@ const RootLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header setIsModalOpen={setIsModalOpen} />
-      <Filter filterdBy={filterdBy} setFilteredBY={setFilteredBY} />
+      <Filter filterdBy={filterdBy} setFilteredBY={setFilteredBY} setJobTypeFilter={setJobTypeFilter} jobTypeFilter={jobTypeFilter} />
       <main className="flex-grow py-26 px-4">
         <Outlet
           context={{
@@ -53,6 +54,8 @@ const RootLayout = () => {
             render,
             setRender,
             filterdBy,
+            jobTypeFilter,
+            
           }}
         />
       </main>

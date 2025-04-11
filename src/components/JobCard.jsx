@@ -44,7 +44,7 @@ const JobCard = ({ job, onEdit }) => {
       </div>
       <p className="text-gray-700 font-medium">{job.company}</p>
       <p className="text-sm text-gray-500">
-        {new Date(job.appliedDate).toLocaleDateString()}
+        {new Date(job.appliedDate).toLocaleDateString("en-GB")}
       </p>
       <p
         className={`mt-1 font-medium text-sm capitalize ${

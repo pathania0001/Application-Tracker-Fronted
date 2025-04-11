@@ -11,6 +11,7 @@ const InputField = ({
   options = [],
   isDisable = false,
   deleteCta,
+  className = "",
 }) => {
   const [showPass, setShowPass] = useState(false);
 
@@ -49,8 +50,8 @@ const InputField = ({
           name={id}
           id={id}
           disabled={isDisable}
-          className="block w-full bg-transparent p-2 border border-gray-200 focus:outline-primary rounded-xl text-desc"
-        >
+          className={`block w-full bg-transparent p-2 border border-gray-200 focus:outline-primary rounded-xl text-desc1 ${className}` }       
+          >
           {options.map((option, key) => (
             <option
               key={key}
